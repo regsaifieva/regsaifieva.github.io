@@ -37,29 +37,29 @@
             <p>Верстка на HTML и CSS <br>Разработка сайтов под ключ</p>
           </div>
         </div>
-        <a class="main-down" href="#"><i class="icon-down"></i></a>
+        <a class="main-down" href="#portfolio"><i class="icon-down"></i></a>
       </div> 
 
-      <div class="portfolio">
+      <div class="portfolio" id="portfolio">
         <div class="container">
           <h2 class="section-header">Портфолио</h2>
           <div class="row">
             <div class="col-md-4">
               <div class="portfolio-block">
               <img src="images/portfolio/1.jpg" alt="Работа №1">
-              <a data-toggle="modal" data-work='work-1.html.html' href="#work">Смотреть работу</a>
+              <a data-toggle="modal" data-work='work-1.html' href="#work">Смотреть работу</a>
               </div>
             </div>
             <div class="col-md-4">
               <div class="portfolio-block">
               <img src="images/portfolio/2.jpg" alt="Работа №2">
-              <a data-toggle="modal" data-work='work-2.html.html' href="#work">Смотреть работу</a>
+              <a data-toggle="modal" data-work='work-2.html' href="#work">Смотреть работу</a>
               </div>
             </div>
             <div class="col-md-4">
               <div class="portfolio-block">
               <img src="images/portfolio/3.jpg" alt="Работа №3">
-              <a data-toggle="modal" data-work='work-3.html.html' href="#work">Смотреть работу</a>
+              <a data-toggle="modal" data-work='work-3.html' href="#work">Смотреть работу</a>
               </div>
             </div>
           </div>
@@ -116,6 +116,27 @@
           modal.find('.modal-body').load(work+'.html');
         });
       });
+    </script>
+    <script>
+    $(document).ready(function() {
+
+            //навигация - плавный скроллинг к якорю
+            $("#nav_slowly").on("click","a", function (event) {
+                //отменяем стандартную обработку нажатия по ссылке
+                event.preventDefault();
+
+                //забираем идентификатор бока с атрибута href
+                var id  = $(this).attr('href'),
+
+                //узнаем высоту от начала страницы до блока на который ссылается якорь
+                    top = $(id).offset().top;
+
+                //анимируем переход на расстояние - top за 1500 мс
+                $('body,html').animate({scrollTop: top}, 800);
+            });
+
+});  
+
     </script>
   </body>
 </html>
